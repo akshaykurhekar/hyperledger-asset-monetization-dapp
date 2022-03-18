@@ -40,9 +40,9 @@ async function main() {
         const contract = network.getContract('fabcar');
 
         // Submit the specified transaction.
-        // createCar transaction - requires 5 argument, ex: ('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom')
-        // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR12', 'Dave')
-        await contract.submitTransaction('createCar', 'CAR12', 'Honda', 'Accord', 'Black', 'Tom');
+        // writeData is chaincode method which need to call with its passing paramenter
+
+        await contract.submitTransaction('writeData', 'key1', 'Akshay .M. Kurhekar');
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.
