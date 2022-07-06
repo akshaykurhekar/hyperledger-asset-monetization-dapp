@@ -1,10 +1,11 @@
 import React,{ useState} from 'react';
-import { Button, InputGroup, Modal} from 'react-bootstrap'
+import { Button, Modal} from 'react-bootstrap'
 import axios from 'axios';
 
 const Model = (props)=>{
 
     const [show, setShow] = useState(false);
+    const [disabled, setDisabled] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -21,6 +22,8 @@ const Model = (props)=>{
 
   const saveCar = async () => {
 
+    setDisabled(true);
+
     const aa = {
         'carid':carId,
         'color':color, 
@@ -34,6 +37,7 @@ const Model = (props)=>{
       });
 
       props.fetchCarData();
+      setDisabled(false);
       setShow(false);
   }
 
@@ -58,7 +62,7 @@ const Model = (props)=>{
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={ saveCar }>
+          <Button variant="primary" onClick={ saveCar } disabled={disabled}>
             Save 
           </Button>
         </Modal.Footer>
